@@ -1,0 +1,103 @@
+import time
+
+
+myThings = []
+
+def CenterForest(msg):
+    print(msg)
+    print("")
+    print("You are in the forest alone. ")
+    print("")
+    print("Which direction do you want to go?")
+    print("(K)... Forward")
+    print("(G)... Left")
+    
+
+    direction = input()
+    if direction.upper() == 'K':
+        Forward()
+    elif direction.upper() == 'G':
+        Left()
+    elif direction.upper() == 'S':  
+        print("You are holding ", myThings)
+        CenterForest("")              
+    else:
+        print("I didn't understand you !")
+        CenterForest("")
+
+
+def Forward():
+    print("You see something in the distance.")
+    print("")
+    print("As you get closer you spot a wooden cabin")
+    print("")
+    print("What do you want to do now?")
+    print("(F)... go back the way you came from")
+    print("(B)... enter the cabin")
+
+
+    direction = input()
+    if direction.upper() == 'F':
+        CenterForest("")
+    elif direction.upper() == 'B':
+        if "Shotgun" in myThings:
+            Cabin()
+        else:
+            Cabin() 
+    elif direction.upper() == 'G':
+        Left()
+    elif direction.upper() == 'P':
+        myThings.append("Shotgun")
+        Forward()
+    else:
+        print("I didn't understand you !")
+        Forward()
+
+def Cabin():
+    print("You are inside the cabin")
+    print("")
+    print("It appears to be abandoned")
+    print("")
+    print("On the wall you spot a shotgun. What do you want to do?")
+    print("(F)... go back")
+    print("(P)... pick up the shotgun")
+
+    direction = input()
+    if direction.upper() == 'K':
+        Forward()
+    elif direction.upper() == 'F':
+        CenterForest("")
+    elif direction.upper() == 'G':
+        Left()
+    else:
+        print("I didn't understand you !")
+        Cabin()
+
+def Left():
+    print("Up ahead are some animals")
+    print("")
+    print("")
+    x = 2
+    while  x < 6:
+        print("You have seen ", x , "bears")
+        x = x+1
+    print("")
+    print("Its too dangerous to go any further.")
+    print("")
+    print("Where do you want to go now ?")
+    print("(F)... go back")
+
+    direction = input()
+    if direction.upper() == 'K':
+        Forward()
+    elif direction.upper() == 'B':
+        Cabin()
+    elif direction.upper() == 'F':
+        CenterForest("")
+    else:
+        print("I didn't understand you !")
+        Left()
+
+
+
+CenterForest("Your have lost your friend Logan in the woods. Go and find him before he films another dead body and uploads it to YouTube!! Hurry!")    
